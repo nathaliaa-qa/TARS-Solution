@@ -1,0 +1,38 @@
+# ---- build ----
+target/
+*.class
+*.jar
+*.war
+build/
+
+# ---- logs ----
+*.log
+logs/
+
+# ---- IDE ----
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+bin/
+
+# ---- SO ----
+.DS_Store
+Thumbs.db
+
+# ---- Maven ----
+.mvn/wrapper/maven-wrapper.jar
+
+# ---- SEGREDOS: nunca commitar valores reais aqui ----
+# application.properties do repo so tem placeholders de dev (ver README).
+# Se voce criar overrides locais com credenciais/segredos de verdade, ficam so na sua maquina:
+application-local.properties
+application-dev.properties
+application-secrets.properties
+.env
+*.pem
+*.key
