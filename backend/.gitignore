@@ -27,12 +27,9 @@ Thumbs.db
 # ---- Maven ----
 .mvn/wrapper/maven-wrapper.jar
 
-# ---- SEGREDOS: nunca commitar valores reais aqui ----
-# application.properties do repo so tem placeholders de dev (ver README).
-# Se voce criar overrides locais com credenciais/segredos de verdade, ficam so na sua maquina:
-application-local.properties
-application-dev.properties
-application-secrets.properties
+
+# ---- Application.properties --- 
+application.properties
 .env
 *.pem
 *.key
