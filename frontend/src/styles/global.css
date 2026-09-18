@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Tokens shadcn/ui (HSL "H S% L%", sem a funcao hsl() em volta - e assim que os
+  componentes de components/ui/* esperam) mapeados para a identidade visual
+  "selo postal" do produto: papel kraft de fundo, tinta azul-marinho como cor
+  primaria, vermelho-selo reservado para destaque/perigo (carimbo "Principal",
+  acoes destrutivas).
+*/
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 35% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --primary: 188 94% 43%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 25% 17%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 222 22% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 188 55% 15%;
+    --accent-foreground: 185 90% 85%;
+
+    --destructive: 0 72% 57%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 19% 22%;
+    --input: 222 19% 25%;
+    --ring: 188 94% 43%;
+
+    --radius: 0.75rem;
+  }
+
+  :root.light {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --primary: 190 85% 34%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 35% 94%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 30% 94%;
+    --muted-foreground: 215 16% 42%;
+    --accent: 187 62% 92%;
+    --accent-foreground: 190 85% 23%;
+    --border: 214 26% 87%;
+    --input: 214 26% 82%;
+    --ring: 190 85% 34%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1,
+  h2 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+.codigo {
+  font-family: theme("fontFamily.mono");
+  letter-spacing: 0.02em;
+  font-size: 0.92em;
+}
+
+/* Logomark do header */
+.app-shell { background: radial-gradient(circle at 30% -10%, hsl(188 80% 13% / .35), transparent 28rem), hsl(var(--background)); transition: background .25s ease, color .25s ease; }
+.light .app-shell { background: radial-gradient(circle at 30% -10%, hsl(188 82% 85% / .62), transparent 30rem), hsl(var(--background)); }
+.app-header { background: hsl(222 35% 8% / .8); border-bottom: 1px solid hsl(var(--border)); backdrop-filter: blur(16px); position: sticky; top: 0; z-index: 20; }
+.light .app-header { background: hsl(0 0% 100% / .82); }
+.selo { color: hsl(var(--primary)); display: inline-flex; }
+.nav-link { @apply pb-1 border-b-2 border-transparent text-muted-foreground transition-colors hover:text-foreground; }
+.nav-link-active { border-color: hsl(var(--primary)); color: hsl(var(--foreground)); }
+.page-heading { @apply flex items-start justify-between gap-5 max-lg:flex-col; }
+.page-heading h1 { @apply text-2xl; }
+.page-heading > div:first-child > p:last-child { @apply mt-1 text-sm text-muted-foreground; }
+.eyebrow { color: hsl(var(--primary)); font-size: .7rem; font-weight: 700; letter-spacing: .12em; }
+.form-panel { border: 1px solid hsl(var(--border)); border-radius: var(--radius); background: hsl(222 28% 12% / .65); padding: 1rem; }
+.light .form-panel { background: hsl(0 0% 100% / .72); }
+.field-error { @apply mt-1 text-xs text-destructive; }
+.field-success { color: hsl(151 62% 57%); @apply mt-1 text-xs; }
+.manual-fallback { border: 1px solid hsl(40 90% 48% / .55); background: hsl(40 80% 20% / .25); color: hsl(43 96% 80%); @apply flex gap-2 rounded-md p-3 text-sm; }
+.autofilled { border-color: hsl(151 62% 45% / .6); background: hsl(151 50% 14% / .25); transition: background .25s ease, border-color .25s ease; }
+.input-select { @apply mt-1 flex h-10 w-full rounded-md border border-input bg-card px-3 py-2 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring; }
+.address-card { border-color: hsl(var(--border)); transition: border-color .2s ease, transform .2s ease; }
+.address-card:hover { border-color: hsl(188 65% 40% / .7); transform: translateY(-1px); }
+.address-card-primary { border-color: hsl(188 94% 43% / .8); box-shadow: inset 0 0 0 1px hsl(188 94% 43% / .12), 0 8px 28px hsl(188 80% 10% / .2); }
+.principal-badge { background: hsl(188 75% 16%); color: hsl(187 95% 83%); border: 1px solid hsl(188 75% 35%); }
+.role-admin { background: hsl(270 65% 22%); color: hsl(270 100% 90%); }
+.role-user { background: hsl(188 55% 15%); color: hsl(185 90% 85%); }
+.system-status-card { width: min(100%, 25rem); background: hsl(222 30% 10% / .85); }
+.light .system-status-card { background: hsl(0 0% 100% / .85); }
+.status-dot { @apply whitespace-nowrap text-xs font-medium; }
+.status-operational { color: hsl(151 62% 57%); }
+.status-degraded { color: hsl(40 92% 60%); }
+.status-unavailable { color: hsl(0 85% 68%); }
+.status-checking, .status-unconfigured { color: hsl(215 20% 65%); }
+.theme-toggle { border: 1px solid hsl(var(--border)); }
+.metric-row { @apply mt-4 flex flex-wrap gap-2 text-xs text-muted-foreground; }
+.metric-row span { @apply inline-flex items-center gap-1 rounded-full border border-border bg-card px-2.5 py-1; }
+.search-field { @apply relative flex min-w-[19rem] items-center; }
+.search-field > svg { @apply absolute left-3 z-10 text-muted-foreground; }
+.search-field input { @apply pl-9 pr-9; }
+.search-field button { @apply absolute right-2 z-10 rounded p-1 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground; }
+
+/* Selo/carimbo do endereço principal — o único elemento com mais personalidade da tela */
+.carimbo {
+  position: absolute;
+  top: -0.6rem;
+  right: 0.9rem;
+  background: hsl(var(--card));
+  color: hsl(var(--destructive));
+  border: 1.5px solid hsl(var(--destructive));
+  border-radius: 4px;
+  padding: 0.15rem 0.6rem;
+  font-family: theme("fontFamily.display");
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transform: rotate(-3deg);
+}
