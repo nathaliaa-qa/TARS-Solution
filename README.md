@@ -10,8 +10,6 @@ Desenvolvida como teste técnico para a vaga de Analista de Sustentação, com i
 
 **Frontend**: React 18, TypeScript, Vite, TanStack React Query, React Hook Form + Zod, Axios, Tailwind CSS + shadcn/ui, Sonner (notificações)
 
-**Infra**: Docker + Docker Compose
-
 ## Como rodar
 
 **Backend** (dentro de `backend/`):
