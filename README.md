@@ -120,5 +120,3 @@ Estados: Operacional, Degradado, Indisponível, Verificando. Reconsulta automati
 .
 ├── backend/     # API REST — Spring Boot
 ├── frontend/    # SPA — React
-└── docker-compose.yml
-```
